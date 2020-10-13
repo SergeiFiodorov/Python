@@ -1,0 +1,130 @@
+import random
+n = 3
+matr1=[]
+matr2=[]
+matr3=[]
+matr4=[]
+matr5=[]
+matr6=[]
+
+print('Выберите тип матрицы (Напечатайте 1 или 2):')
+print('1) Случайная генерация 2-х матриц')
+print('2) Введение значений 2-х матриц пользователем')
+print('3) Случайная генерация 1 матрицы')
+print('4) Введение значений 1-й матрицы пользователем')
+print()
+d=int(input('Действие='))
+
+if d==1:
+    for i in range(n):
+        s1=[]
+        s2=[] 
+        for j in range(n):
+            s1.append(random.randint(1,9))
+            s2.append(random.randint(1,9))
+        matr1.append(s1)
+        matr2.append(s2)
+        
+    print('Matrix1:')    
+    for i in range(n):
+        print(*matr1[i])
+    print('Matrix2:') 
+    for i in range(n):
+        print(*matr2[i])
+print()
+if d==2:
+    for i in range(n):
+        s = [ int(x) for x in input().split()]  
+        matr1.append(s)
+        for i in range(n):
+            s = [ int(x) for x in input().split()] 
+            matr2.append(s)
+if d==3:
+    for i in range(n):
+        s1=[]
+        s2=[] 
+        for j in range(n):
+            s1.append(random.randint(1,9))
+        matr1.append(s1)
+        
+    print('Matrix1:')    
+    for i in range(n):
+        print(*matr1[i]) 
+print()
+if d==4:
+    for i in range(n):
+        s = [ int(x) for x in input().split()]  
+        matr1.append(s)
+    
+
+print('Выберите действие (введите значение от 1 до 4):')
+print('1) Сложение (необходимы 2 матрицы)')
+print('2) Разность (необходимы 2 матрицы)')
+print('3) Умножение матриц (необходимы 2 матрицы)')
+print('4) Умножение на константу const (только для 1 матрицы)')
+print()
+v=int(input('Действие='))
+    
+#Сложение 
+if v==1:
+    for i in range(n):
+        c1 = matr1[i] #горизонтальная линия 1 матрицы
+        c2 = matr2[i] #гл 2 матрицы
+        c3 = [] #гл 3 матрицы
+        for j in range(n):
+            c3.append(c1[j]+c2[j])
+        matr3.append(c3)
+ 
+    print('Matrix +:') 
+    for i in range(n):
+        print(*matr3[i])
+    
+#Вычитание
+if v==2:
+
+    for i in range(n):
+        c1 = matr1[i]
+        c2 = matr2[i]
+        c3 = []
+        for j in range(n):
+            c3.append(c1[j]-c2[j])
+        matr4.append(c3)
+ 
+    print('Matrix -:') 
+    for i in range(n):
+        print(*matr4[i])
+
+#Умножение матриц
+if v==3:
+
+    for i in range(n):
+        c1 = matr1[i]
+        c3=[]
+        for h in range(n):
+            c2=[]
+            for g in range(n):
+                c2.append(matr2[g][h])
+            new=0
+            for t in range(n):
+                new+=c1[t]*c2[t]
+            c3.append(new)
+        matr5.append(c3)
+
+    print('Matrix *:')
+    for i in range(n):
+        print(*matr5[i])
+
+#Умножение на число
+if v==4:
+    const=int(input('const='))
+    for i in range(n):
+        c1 = matr1[i]
+        c3 = []
+        for j in range(n):
+            c3.append(c1[j]*const)
+        matr6.append(c3)
+       
+    print('Matrix *const:')
+    for i in range(n):
+        print(*matr6[i])
+    
